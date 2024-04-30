@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /
+
+# Internet Archive ignores this, it's really the only bot I stil want to crawl this site
+# https://webmasters.stackexchange.com/questions/71377/how-to-properly-disallow-the-archive-org-bot-did-things-change-if-so-when
+# plus the ia_archiver agent gets abused by amazon sometimes https://www.useragentstring.com/index.php?id=12
