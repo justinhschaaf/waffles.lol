@@ -3,6 +3,7 @@
     .banner {
 
         background-image: url("assets/background.webp");
+        background-size: cover;
         overflow: hidden;
 
         .inner {
@@ -34,6 +35,18 @@
                 h1 {
                     margin-top: 24px;
                     font-size: 4em;
+                }
+
+                @media screen and (max-width: 550px) {
+
+                    .logo {
+                        max-width: 80px;
+                    }
+
+                    h1 {
+                        font-size: 3em;
+                    }
+
                 }
 
             }
