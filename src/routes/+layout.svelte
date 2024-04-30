@@ -80,9 +80,16 @@
 
 <svelte:head>
 
+    <title>waffles.lol</title>
+    <meta name="description" content="Pancakes ribbed for your pleasure.">
+
     <link rel="canonical" href={canonicalUrl}>
 
     <!-- OpenGraph data https://ogp.me/ -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="waffles.lol">
+    <meta property="og:description" content="Pancakes ribbed for your pleasure.">
+    <meta property="og:image" content="/assets/logo.webp">
     <meta property="og:url" content={canonicalUrl}>
     <meta property="og:site_name" content="waffles.lol">
 
