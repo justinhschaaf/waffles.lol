@@ -31,11 +31,13 @@
 
     :global(.light) {
         --gradient-color: var(--color-light);
+        background-color: var(--color-light);
         color: var(--color-dark);
     }
 
     :global(.dark) {
         --gradient-color: var(--color-dark);
+        background-color: var(--color-dark);
         color: var(--color-light);
     }
 
@@ -50,6 +52,15 @@
         text-shadow: var(--shadow-text);
     }
 
+    :global(a) {
+        color: var(--color-accent-orange);
+        text-decoration: none;
+    }
+
+    :global(a:hover) {
+        text-decoration: underline;
+    }
+
     // Image formatting is fucked if we don't do this
     :global(img) {
         width: 100%;
@@ -58,6 +69,7 @@
     main {
         // Make sure there's nothing under the footer
         min-height: 100vh;
+        font-size: 17px;
 
     }
 
