@@ -21,7 +21,7 @@
 
         --color-dark: #1d1f21;
         --color-light: #ffffff;
-        --color-accent-blue: #26afbf;
+        --color-accent-blue: #3e83f5;
         --color-accent-orange: #F5B03E;
 
         --shadow: 0 0px 8px 0px rgba(0, 0, 0, 0.4);
@@ -39,6 +39,10 @@
         --gradient-color: var(--color-dark);
         background-color: var(--color-dark);
         color: var(--color-light);
+    }
+
+    :global(.blue) {
+        --color-accent-orange: var(--color-accent-blue);
     }
 
     :global(h1, h2, h3, h4, h5, h6) {
@@ -70,7 +74,6 @@
         // Make sure there's nothing under the footer
         min-height: 100vh;
         font-size: 17px;
-
     }
 
 </style>
@@ -85,6 +88,6 @@
 
 </svelte:head>
 
-<main class:dark={darkTheme} class:light={!darkTheme}>
+<main class:dark={darkTheme} class:light={!darkTheme} class:blue={$page.data.blue}>
     <slot></slot>
 </main>

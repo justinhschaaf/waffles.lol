@@ -1,8 +1,16 @@
+<script lang="ts">
+
+    import { page } from "$app/stores";
+
+    let bg = $page.data.blue ? "assets/background_blue.webp" : "assets/background.webp";
+    let logo = $page.data.blue ? "assets/logo_blue.webp" : "assets/logo.webp";
+
+</script>
+
 <style lang="scss">
 
     .banner {
 
-        background-image: url("assets/background.webp");
         background-size: cover;
         overflow: hidden;
 
@@ -89,14 +97,14 @@
 
 </style>
 
-<div class="banner">
+<div class="banner" style="background-image: url({bg});">
 
     <div class="inner">
 
         <div class="content">
 
             <img class="logo" 
-                src="assets/logo.webp" 
+                src={logo} 
                 alt="An emoji waffle in the shape of a heart. There is a pad of butter in the middle."/>
     
             <h1>waffles.lol</h1>
