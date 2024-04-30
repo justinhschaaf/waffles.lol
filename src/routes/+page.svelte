@@ -1,2 +1,95 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<style lang="scss">
+
+    .banner {
+
+        background-image: url("assets/background.webp");
+        overflow: hidden;
+
+        .inner {
+
+            max-width: 800px;
+            height: 100vh;
+            margin: auto;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            animation: 1s ease-out 0s 1 fadeIn;
+
+            .content {
+
+                padding: 48px;
+                margin: auto;
+
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                z-index: 1;
+
+                .logo {
+                    max-width: 128px;
+                }
+
+                h1 {
+                    margin-top: 24px;
+                    font-size: 4em;
+                }
+
+            }
+
+        }
+
+    }
+
+    .banner:before {
+
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+
+        background: linear-gradient(rgba(0, 0, 0, 0), var(--gradient-color));
+
+        animation: 1s ease-out 0s 1 fadeIn;
+
+    }
+
+    @keyframes fadeIn {
+
+        0% {
+            opacity: 0;
+            transform: translateY(+1%);
+        }
+        
+        // Start adjusting opacity later to avoid flashing h1 color
+        10% {
+            opacity: 0;
+        }
+
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+    }
+
+</style>
+
+<div class="banner">
+
+    <div class="inner">
+
+        <div class="content">
+
+            <img class="logo" 
+                src="assets/logo.webp" 
+                alt="An emoji waffle in the shape of a heart. There is a pad of butter in the middle."/>
+    
+            <h1>waffles.lol</h1>
+
+        </div>
+
+    </div>
+
+</div>
