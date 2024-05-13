@@ -41,10 +41,6 @@
         color: var(--color-light);
     }
 
-    :global(.blue) {
-        --color-accent-orange: var(--color-accent-blue);
-    }
-
     :global(h1, h2, h3, h4, h5, h6) {
         font-family: 'Aclonica', sans-serif;
         font-weight: 400;
@@ -95,6 +91,6 @@
 
 </svelte:head>
 
-<main class:dark={darkTheme} class:light={!darkTheme} class:blue={$page.data.blue}>
+<main class:dark={darkTheme} class:light={!darkTheme} class:af={$page.data.af}>
     <slot></slot>
 </main>
