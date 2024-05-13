@@ -4,7 +4,7 @@
 
     .banner {
 
-        background-image: url("assets/LCCN2010630838.webp");
+        background-image: url("/assets/LCCN2010630838.webp");
         background-size: contain;
         background-repeat: no-repeat;
         background-position: 100%;

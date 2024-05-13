@@ -2,8 +2,8 @@
 
     import { page } from "$app/stores";
 
-    let bg = $page.data.af ? "assets/background.webp" : "assets/background.webp";
-    let logo = $page.data.af ? "assets/logo.webp" : "assets/logo.webp";
+    let bg = $page.data.af ? "/assets/background.webp" : "/assets/background.webp";
+    let logo = $page.data.af ? "/assets/logo.webp" : "/assets/logo.webp";
 
 </script>
 
