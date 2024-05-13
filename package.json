@@ -20,7 +20,7 @@
     },
     "type": "module",
     "dependencies": {
-        "@sveltejs/adapter-static": "^3.0.1",
+        "@sveltejs/adapter-node": "^5.0.1",
         "sass": "^1.75.0"
     }
 }
