@@ -13,15 +13,21 @@
     outputs = { self, nixpkgs, flake-utils }: 
     flake-utils.lib.eachDefaultSystem(system:
         let pkgs = import nixpkgs { inherit system; }; in {
-            devShells.default = pkgs.mkShell {
+
+            devShells.default = pkgs.mkShell rec {
 
                 packages = with pkgs; [
                     yarn-berry
+                    libuuid
                 ];
 
                 # Playwright is fucked
                 # https://nixos.wiki/wiki/Playwright
                 # https://www.giacomodebidda.com/posts/playwright-on-nixos/
+                # https://github.com/Automattic/node-canvas/issues/1947#issuecomment-991016228
+                LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath packages;
+
+            };
 
             };
         }
