@@ -47,10 +47,10 @@
                     wants = [ "network-online.target" ];
                     after = [ "network-online.target" ];
                     environment = {
-                        PORT = config.services.waffles.lol.port;
+                        PORT = "${toString config.services.waffles.lol.port}";
                         ORIGIN = config.services.waffles.lol.hostName;
-                        SHUTDOWN_TIMEOUT = config.services.waffles.lol.shutdownTimeout;
-                        IDLE_TIMEOUT = config.services.waffles.lol.idleTimeout;
+                        SHUTDOWN_TIMEOUT = "${toString config.services.waffles.lol.shutdownTimeout}";
+                        IDLE_TIMEOUT = "${toString config.services.waffles.lol.idleTimeout}";
                     };
                 };
 
