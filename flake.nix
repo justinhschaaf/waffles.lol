@@ -44,6 +44,7 @@
 
                 systemd.services."waffles.lol" = {
                     script = "${self.outputs.packages.${pkgs.system}.default}/bin/waffles.lol";
+                    wantedBy = [ "multi-user.target" ];
                     wants = [ "network-online.target" ];
                     after = [ "network-online.target" ];
                     environment = {
@@ -52,11 +53,12 @@
                         SHUTDOWN_TIMEOUT = "${toString config.services.waffles.lol.shutdownTimeout}";
                         IDLE_TIMEOUT = "${toString config.services.waffles.lol.idleTimeout}";
                     };
-                };
-
-                systemd.sockets."waffles.lol" = {
-                    listenStreams = [ "${toString config.services.waffles.lol.port}" ];
-                    wantedBy = [ "sockets.target" ];
+                    serviceConfig = {
+                        DynamicUser = true;
+                        User = "waffles-lol";
+                        Restart = "on-failure";
+                        RestartSec = "1s";
+                    };
                 };
 
             };
