@@ -10,7 +10,7 @@
     inputs.nixpkgs.url = "github:nixos/nixpkgs";
     inputs.flake-utils.url = "github:numtide/flake-utils";
 
-    outputs = { self, nixpkgs, flake-utils }: 
+    outputs = { self, nixpkgs, flake-utils }:
     flake-utils.lib.eachDefaultSystem(system:
         let pkgs = import nixpkgs { inherit system; }; in {
 
@@ -26,34 +26,9 @@
 
             };
 
-            # Adapted from https://blog.ielliott.io/nix-docs/mkDerivation.html#reference-inputs-src
+            # Made using https://github.com/stephank/yarn-plugin-nixify
             # Full options at https://ryantm.github.io/nixpkgs/stdenv/stdenv/
-            packages.default = let
-                pkgJson = builtins.fromJSON (builtins.readFile ./package.json);
-            in pkgs.stdenv.mkDerivation rec {
-
-                name = pkgJson.name;
-                version = pkgJson.version;
-                src = ./.;
-
-                buildInputs = with pkgs; [ yarn-berry ];
-
-                buildPhase = ''
-                    yarn install
-                    yarn run build
-                '';
-
-                # https://stackoverflow.com/questions/46891622/run-yarn-in-a-different-path
-                installPhase = ''
-
-                    install -D -t $out/build/ $src/build/*
-                    install -D -t $out/ $src/.npmrc $src/.yarnrc.yml $src/package.json $src/yarn.lock
-
-                    yarn -cwd $out/ workspaces focus --production
-
-                '';
-
-            };
+            packages.default = pkgs.callPackage ./default.nix {};
 
             nixosModules.default = { inputs, lib, config, pkgs, ... }: {
 
@@ -84,10 +59,8 @@
 
                 config = lib.mkIf config.services.waffles.lol.enable {
 
-                    environment.systemPackages = with pkgs; [ nodejs-slim ];
-
                     systemd.services."waffles.lol" = {
-                        script = "${pkgs.nodejs-slim}/bin/node ${self.outputs.packages.default}";
+                        script = "${self.outputs.packages.default}/bin/waffles.lol";
                         wants = [ "network-online.target" ];
                         after = [ "network-online.target" ];
                         environment = {

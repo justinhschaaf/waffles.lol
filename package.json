@@ -2,6 +2,17 @@
     "name": "waffles.lol",
     "version": "0.0.1",
     "private": true,
+    "bin": "build/index.js",
+    "files": [
+        "build/",
+        "node_modules/",
+        ".npmrc",
+        ".yarnrc.yml",
+        "package.json",
+        "yarn.lock",
+        "README.md",
+        "LICENSE.md"
+    ],
     "scripts": {
         "dev": "vite dev",
         "build": "vite build",

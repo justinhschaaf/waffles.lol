@@ -3006,6 +3006,8 @@ __metadata:
     tslib: "npm:^2.4.1"
     typescript: "npm:^5.0.0"
     vite: "npm:^5.0.3"
+  bin:
+    waffles.lol: build/index.js
   languageName: unknown
   linkType: soft
 
