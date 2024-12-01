@@ -43,7 +43,7 @@
             config = lib.mkIf config.services.waffles.lol.enable {
 
                 systemd.services."waffles.lol" = {
-                    script = "${self.outputs.packages.default}/bin/waffles.lol";
+                    script = "${self.outputs.packages.${pkgs.system}.default}/bin/waffles.lol";
                     wants = [ "network-online.target" ];
                     after = [ "network-online.target" ];
                     environment = {
